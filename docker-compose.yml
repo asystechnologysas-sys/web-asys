@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      DATABASE_PATH: /data/leads.db
+      API_SECRET_KEY: ${API_SECRET_KEY:-}
+    volumes:
+      - leads_data:/data
+    restart: unless-stopped
+
+volumes:
+  leads_data:

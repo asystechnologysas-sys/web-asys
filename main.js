@@ -1,7 +1,7 @@
 import { createIcons, icons } from 'lucide';
 import { initHero3DScene } from './src/threeScene.js';
 import { projectsData } from './src/projectsData.js';
-import { saveContactLead } from './src/supabaseClient.js';
+import { saveContactLead } from './src/apiClient.js';
 
 // Global object to store user uploaded photos per project in memory
 const customProjectPhotos = {};
@@ -368,7 +368,7 @@ function setupNavbar() {
   }
 }
 
-// Setup Contact Form Submit Handler with Supabase Integration
+// Setup Contact Form Submit Handler
 function setupContactForm() {
   const form = document.getElementById('main-contact-form');
   const submitBtn = document.getElementById('btn-submit-form');
@@ -385,19 +385,13 @@ function setupContactForm() {
 
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i data-lucide="loader"></i> Registrando en Supabase...';
+      submitBtn.innerHTML = '<i data-lucide="loader"></i> Enviando solicitud...';
       createIcons({ icons });
     }
 
     try {
-      const result = await saveContactLead({ name, email, phone, service, message });
-
-      if (result.isDemo) {
-        alert(`¡Gracias ${name}! Tu solicitud ha sido registrada correctamente.\n\n[Supabase Status]: Integración de frontend lista. Conecta tu VITE_SUPABASE_URL para guardar en tu tabla 'leads'.`);
-      } else {
-        alert(`¡Gracias ${name}! Tu mensaje ha sido guardado exitosamente en la base de datos de Supabase. El equipo de ASYS Technology S.A.S. te contactará en breve.`);
-      }
-
+      await saveContactLead({ name, email, phone, service, message });
+      alert(`¡Gracias ${name}! Tu mensaje ha sido registrado correctamente. El equipo de ASYS Technology S.A.S. te contactará en breve.`);
       form.reset();
     } catch (err) {
       alert(`Ocurrió un inconveniente guardando la información: ${err.message}`);

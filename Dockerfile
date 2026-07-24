@@ -1,42 +1,39 @@
 # ─────────────────────────────────────────────
-# Stage 1: Build con Node.js
+# Stage 1: Build del frontend con Node.js
 # ─────────────────────────────────────────────
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copiar archivos de dependencias
 COPY package*.json ./
-
-# Instalar dependencias
 RUN npm ci
 
-# Copiar el resto del código fuente
 COPY . .
-
-# Variables de entorno de Supabase para el build
-# (estas se sobreescriben con las variables de EasyPanel)
-ARG VITE_SUPABASE_URL
-ARG VITE_SUPABASE_ANON_KEY
-
-ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
-ENV VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY
-
-# Construir el proyecto
 RUN npm run build
 
 # ─────────────────────────────────────────────
-# Stage 2: Servir con Nginx (ultra liviano)
+# Stage 2: Nginx + API Node.js + SQLite
 # ─────────────────────────────────────────────
-FROM nginx:alpine
+FROM node:20-alpine
 
-# Copiar los archivos estáticos construidos
+RUN apk add --no-cache nginx
+
+WORKDIR /app
+
+COPY server/package*.json ./server/
+RUN cd server && npm ci --omit=dev
+
+COPY server ./server
+COPY database ./database
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/http.d/default.conf
+COPY start.sh /start.sh
 
-# Copiar configuración personalizada de Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN chmod +x /start.sh && mkdir -p /data
 
-# Puerto expuesto
+ENV DATABASE_PATH=/data/leads.db
+ENV PORT=3000
+
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/start.sh"]
