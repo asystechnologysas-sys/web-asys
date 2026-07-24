@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATABASE_PATH = process.env.DATABASE_PATH || path.join(__dirname, '../data/leads.db');
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = 3000;
 const API_SECRET_KEY = process.env.API_SECRET_KEY || '';
 
 function initDatabase() {
