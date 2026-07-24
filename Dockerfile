@@ -32,7 +32,7 @@ COPY start.sh /start.sh
 RUN chmod +x /start.sh && mkdir -p /data
 
 ENV DATABASE_PATH=/data/leads.db
-ENV PORT=3000
+
 
 EXPOSE 80
 
