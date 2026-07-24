@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Leads | ASYS Technology S.A.S.</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="admin-page">
+
+  <div class="bg-ambient-lights">
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+  </div>
+
+  <header class="navbar admin-navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo">
+        <img src="/assets/logo.jpg" alt="ASYS Technology S.A.S. Logo">
+        <div class="brand-text">
+          <span class="brand-name">ASYS TECHNOLOGY <small style="font-size:0.75rem; color:var(--blue-primary);">S.A.S.</small></span>
+          <span class="brand-tagline">PANEL DE LEADS</span>
+        </div>
+      </a>
+
+      <div class="admin-nav-actions">
+        <a href="/" class="btn btn-secondary admin-back-btn">
+          <i data-lucide="arrow-left"></i> Volver al sitio
+        </a>
+        <button type="button" class="btn btn-secondary hidden" id="admin-logout-btn">
+          <i data-lucide="log-out"></i> Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main container">
+
+    <section class="clean-card admin-login-card hidden" id="admin-login">
+      <div class="admin-login-content">
+        <div class="badge"><i data-lucide="shield-check"></i> Acceso restringido</div>
+        <h1>Panel de Leads</h1>
+        <p>Ingresa tu clave de administrador para consultar las solicitudes registradas desde el formulario de contacto.</p>
+
+        <form id="admin-login-form" class="admin-login-form">
+          <div class="form-group">
+            <label for="admin-api-key">Clave de acceso (API_SECRET_KEY)</label>
+            <input type="password" id="admin-api-key" class="form-input" placeholder="Tu clave secreta" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            <i data-lucide="unlock"></i> Ingresar al panel
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section class="hidden" id="admin-dashboard">
+      <div class="admin-page-header">
+        <div>
+          <div class="badge"><i data-lucide="database"></i> Solicitudes registradas</div>
+          <h1>Leads de contacto</h1>
+          <p class="admin-page-description">Consulta en tiempo real los mensajes enviados por los usuarios desde el formulario del sitio web.</p>
+        </div>
+        <button type="button" class="btn btn-primary" id="admin-refresh-btn">
+          <i data-lucide="refresh-cw"></i> Actualizar
+        </button>
+      </div>
+
+      <div class="admin-stats-grid">
+        <div class="clean-card admin-stat-card">
+          <div class="admin-stat-icon"><i data-lucide="users"></i></div>
+          <div>
+            <span class="admin-stat-label">Total de leads</span>
+            <strong class="admin-stat-value" id="stat-total">0</strong>
+          </div>
+        </div>
+        <div class="clean-card admin-stat-card">
+          <div class="admin-stat-icon"><i data-lucide="calendar-check"></i></div>
+          <div>
+            <span class="admin-stat-label">Recibidos hoy</span>
+            <strong class="admin-stat-value" id="stat-today">0</strong>
+          </div>
+        </div>
+        <div class="clean-card admin-stat-card">
+          <div class="admin-stat-icon"><i data-lucide="clock-3"></i></div>
+          <div>
+            <span class="admin-stat-label">Último registro</span>
+            <strong class="admin-stat-value admin-stat-value-sm" id="stat-latest">—</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="clean-card admin-table-card">
+        <div class="admin-error hidden" id="admin-error"></div>
+
+        <div class="admin-empty-state hidden" id="admin-empty-state">
+          <div class="admin-empty-icon"><i data-lucide="inbox"></i></div>
+          <h3>Sin registros todavía</h3>
+          <p>Cuando alguien envíe el formulario de contacto, aparecerá aquí automáticamente.</p>
+        </div>
+
+        <div class="admin-table-wrap" id="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Contacto</th>
+                <th>Teléfono</th>
+                <th>Interés</th>
+                <th>Mensaje</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody id="admin-leads-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>

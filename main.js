@@ -2,6 +2,7 @@ import { createIcons, icons } from 'lucide';
 import { initHero3DScene } from './src/threeScene.js';
 import { projectsData } from './src/projectsData.js';
 import { saveContactLead } from './src/apiClient.js';
+import { showNotification } from './src/notification.js';
 
 // Global object to store user uploaded photos per project in memory
 const customProjectPhotos = {};
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Setup Contact Form Submit Handler
   setupContactForm();
+
+  window.refreshIcons = () => createIcons({ icons });
 });
 
 // Render Projects Repository
@@ -391,10 +394,18 @@ function setupContactForm() {
 
     try {
       await saveContactLead({ name, email, phone, service, message });
-      alert(`¡Gracias ${name}! Tu mensaje ha sido registrado correctamente. El equipo de ASYS Technology S.A.S. te contactará en breve.`);
+      showNotification({
+        type: 'success',
+        title: '¡Solicitud registrada!',
+        message: `Gracias ${name}. Tu mensaje ha sido guardado correctamente. El equipo de ASYS Technology S.A.S. te contactará en breve.`
+      });
       form.reset();
     } catch (err) {
-      alert(`Ocurrió un inconveniente guardando la información: ${err.message}`);
+      showNotification({
+        type: 'error',
+        title: 'No se pudo enviar',
+        message: err.message || 'Ocurrió un inconveniente guardando la información. Intenta nuevamente.'
+      });
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
