@@ -6,13 +6,16 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        admin: resolve(__dirname, 'admin.html') // Esto activa el diseño en la página admin
+        admin: resolve(__dirname, 'admin.html')
       }
     }
   },
   server: {
     proxy: {
-      '/api': 'http://localhost:3000'
+      '/api': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true
+      }
     }
   }
 });
