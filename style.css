@@ -53,9 +53,14 @@ body {
   position: relative;
   min-height: 100vh;
   line-height: 1.6;
+  overflow-x: hidden;
   background-image: 
     radial-gradient(circle at 10% 20%, rgba(29, 78, 216, 0.03) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.03) 0%, transparent 40%);
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
 }
 
 /* Custom Scrollbar */
@@ -1442,23 +1447,314 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 768px) {
-  .nav-links {
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 92%;
+    max-width: 100%;
+    padding: 0 4px;
+  }
+
+  /* ── Navbar mobile ── */
+  .navbar {
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .navbar.scrolled {
+    padding: 8px 0;
+  }
+
+  .nav-container {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .brand-logo {
+    flex: 1;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .brand-logo img {
+    height: 38px;
+    width: 38px;
+    flex-shrink: 0;
+  }
+
+  .brand-text {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand-name {
+    font-size: 0.82rem;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+
+  /* Hide navbar social icons on mobile — available in contact/footer */
+  .nav-social-row {
     display: none;
   }
 
   .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-xs);
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border-hairline);
+    position: relative;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 80px 24px 32px;
+    z-index: 999;
+    overflow-y: auto;
+    list-style: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .nav-links a {
     display: block;
+    padding: 16px 4px;
+    font-size: 1.05rem;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  /* ── Hero mobile ── */
+  .hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+
+  .hero-grid {
+    gap: 28px;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-content .badge {
+    font-size: 0.72rem;
+    padding: 5px 12px;
+    margin-bottom: 14px;
+    line-height: 1.4;
+    white-space: normal;
+    text-align: center;
+    align-self: flex-start;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 24px;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 0.9rem;
   }
 
   .stats-banner {
     grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+
+  .stat-item h3 {
+    font-size: 1.6rem;
+  }
+
+  .stat-item p {
+    font-size: 0.78rem;
+  }
+
+  .hero-3d-wrapper {
+    height: 280px;
+    border-radius: var(--radius-md);
+  }
+
+  .canvas-overlay-card {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 10px 14px;
+  }
+
+  .canvas-overlay-text p {
+    font-size: 0.78rem;
+  }
+
+  .canvas-overlay-text span {
+    font-size: 0.68rem;
+  }
+
+  /* ── Sections mobile ── */
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .section-title {
+    font-size: 1.65rem;
+    line-height: 1.25;
+  }
+
+  .section-description {
+    font-size: 0.92rem;
+  }
+
+  .services-section,
+  .repository-section,
+  .workflow-section,
+  .testimonials-section,
+  .contact-section {
+    padding: 56px 0;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 24px 20px;
+  }
+
+  .repo-filter-bar {
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .filter-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pipeline-container {
+    padding: 20px 16px;
   }
 
   .pipeline-steps-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .testimonial-card {
+    padding: 22px 18px;
+  }
+
+  .contact-card-wrapper {
+    padding: 24px 18px;
+    gap: 28px;
+  }
+
+  .contact-social-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .contact-social-link {
+    justify-content: center;
+    padding: 12px 16px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .modal-content-card {
+    padding: 24px 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-name {
+    font-size: 0.72rem;
+  }
+
+  .hero-title {
+    font-size: 1.55rem;
+  }
+
+  .hero-content .badge {
+    font-size: 0.68rem;
   }
 }
