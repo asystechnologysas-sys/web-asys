@@ -4,9 +4,6 @@ import { projectsData } from './src/projectsData.js';
 import { saveContactLead } from './src/apiClient.js';
 import { showNotification } from './src/notification.js';
 
-// Global object to store user uploaded photos per project in memory
-const customProjectPhotos = {};
-
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Lucide Icons
   createIcons({ icons });
@@ -142,9 +139,6 @@ function openProjectModal(projectId) {
   const modal = document.getElementById('project-modal');
   const modalBody = document.getElementById('modal-body-content');
 
-  // User uploaded photos array
-  const userUploaded = customProjectPhotos[projectId] || [];
-
   modalBody.innerHTML = `
     <button class="modal-close-btn" id="modal-close-btn">&times;</button>
     
@@ -170,26 +164,8 @@ function openProjectModal(projectId) {
           </div>
         `).join('')}
 
-        ${userUploaded.map((photoUrl, idx) => `
-          <div style="border-radius:10px; overflow:hidden; border:2px solid var(--blue-primary); background:#000;">
-            <img src="${photoUrl}" alt="Foto ${idx + 1}" style="width:100%; height:200px; object-fit:cover; display:block;">
-            <div style="padding:10px 14px; background:var(--blue-light); font-size:0.8rem; color:var(--blue-primary); font-weight:700;">
-              ✓ Foto subida por el usuario #${idx + 1}
-            </div>
-          </div>
-        `).join('')}
       </div>
 
-      <!-- Live Uploader Button for User -->
-      <div style="padding:16px; background:var(--blue-light); border:1px dashed var(--blue-primary); border-radius:10px; text-align:center;">
-        <p style="font-size:0.88rem; color:var(--navy-dark); font-weight:600; margin-bottom:8px;">
-          <i data-lucide="upload-cloud"></i> Subir nuevas fotos o capturas a este proyecto:
-        </p>
-        <input type="file" id="upload-project-photo" accept="image/*" multiple style="display:none;">
-        <button class="btn btn-secondary" onclick="document.getElementById('upload-project-photo').click()" style="padding:8px 18px; font-size:0.85rem;">
-          <i data-lucide="plus-circle"></i> Seleccionar Imágenes desde tu Dispositivo
-        </button>
-      </div>
     </div>
 
     <!-- Impact Metrics Grid -->
@@ -258,28 +234,6 @@ function openProjectModal(projectId) {
 
   createIcons({ icons });
   modal.classList.add('active');
-
-  // Handle Photo Upload input
-  const photoInput = document.getElementById('upload-project-photo');
-  if (photoInput) {
-    photoInput.addEventListener('change', (e) => {
-      const files = Array.from(e.target.files);
-      if (!files || files.length === 0) return;
-
-      if (!customProjectPhotos[projectId]) {
-        customProjectPhotos[projectId] = [];
-      }
-
-      files.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          customProjectPhotos[projectId].push(event.target.result);
-          openProjectModal(projectId);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-  }
 
   const closeBtn = document.getElementById('modal-close-btn');
   closeBtn.addEventListener('click', () => {
