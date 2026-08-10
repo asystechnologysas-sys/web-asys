@@ -18,9 +18,9 @@ export const projectsData = [
     fullDescription: 'Desarrollo de una solución tecnológica accesible diseñada para la tienda de barrio de la Sra. Luzmila. La plataforma permite registrar ventas rápidamente seleccionando múltiples medios de pago (Efectivo, Nequi, Daviplata, Fiado local), controlar el stock de inventario de todos los productos en tiempo real, visualizar gráficas automáticas de ventas diarias y detectar los productos de menor rotación para evitar pérdidas.',
     technologies: ['React Web POS', 'Chart.js Estadísticas', 'Integración Nequi / Daviplata', 'Base de Datos Local & Cloud'],
     images: [
-      { url: '/assets/tienda1.jpeg', caption: 'Captura 1 del sistema POS para la tienda de la Sra. Luzmila' },
-      { url: '/assets/tienda2.jpeg', caption: 'Captura 2 del sistema POS para la tienda de la Sra. Luzmila' },
-      { url: '/assets/tienda3.jpeg', caption: 'Captura 3 del sistema POS para la tienda de la Sra. Luzmila' }
+      { url: './assets/tienda1.jpeg', caption: 'Captura 1 del sistema POS para la tienda de la Sra. Luzmila' },
+      { url: './assets/tienda2.jpeg', caption: 'Captura 2 del sistema POS para la tienda de la Sra. Luzmila' },
+      { url: './assets/tienda3.jpeg', caption: 'Captura 3 del sistema POS para la tienda de la Sra. Luzmila' }
     ],
     featuresList: [
       'Registro de ventas en pantalla táctil o teclado con múltiples formas de pago (Nequi, Daviplata, Efectivo).',
@@ -61,9 +61,9 @@ export const projectsData = [
     fullDescription: 'Solución web a medida creada para resolver el caos del agendamiento manual en la barbería de barrio de Jorge Mendoza. El sistema permite a los clientes ingresar desde su celular, elegir el barbero (Jorge Mendoza o su equipo), seleccionar el servicio (corte urbano, arreglo de barba, pigmentación, combos), escoger la hora disponible y recibir confirmaciones y alertas por WhatsApp.',
     technologies: ['Web PWA Móvil', 'API WhatsApp Cloud', 'Calendario Dinámico', 'Panel de Administración'],
     images: [
-      { url: '/assets/barber1.jpeg', caption: 'Captura 1 del sistema de agendamiento para barbería' },
-      { url: '/assets/barber2.jpeg', caption: 'Captura 2 del sistema de agendamiento para barbería' },
-      { url: '/assets/barber3.jpeg', caption: 'Captura 3 del sistema de agendamiento para barbería' }
+      { url: './assets/barber1.jpeg', caption: 'Captura 1 del sistema de agendamiento para barbería' },
+      { url: './assets/barber2.jpeg', caption: 'Captura 2 del sistema de agendamiento para barbería' },
+      { url: './assets/barber3.jpeg', caption: 'Captura 3 del sistema de agendamiento para barbería' }
     ],
     featuresList: [
       'Reserva de citas 24/7 sin intervención manual ni interrupción al barbero.',
@@ -104,9 +104,9 @@ export const projectsData = [
     fullDescription: 'Proyecto académico y técnico desarrollado por José Narváez para la Universidad del Magdalena. El sistema implementa modelos de Procesamiento de Lenguaje Natural (PLN/NLP) entrenados con la normativa, pensum, electivas, prerequisitos y horarios de tutorías del programa de Ingeniería de Sistemas. Atiende preguntas de los estudiantes en lenguaje informal, entregando respuestas inmediatas y guiadas.',
     technologies: ['Python / NLP / NLTK', 'Transformers & Machine Learning', 'Universidad del Magdalena Badge', 'FastAPI REST Server'],
     images: [
-      { url: '/assets/unimac1.jpeg', caption: 'Captura 1 del chatbot de la Universidad del Magdalena' },
-      { url: '/assets/unimac2.jpeg', caption: 'Captura 2 del chatbot de la Universidad del Magdalena' },
-      { url: '/assets/unimac3.jpeg', caption: 'Captura 3 del chatbot de la Universidad del Magdalena' }
+      { url: './assets/unimac1.jpeg', caption: 'Captura 1 del chatbot de la Universidad del Magdalena' },
+      { url: './assets/unimac2.jpeg', caption: 'Captura 2 del chatbot de la Universidad del Magdalena' },
+      { url: './assets/unimac3.jpeg', caption: 'Captura 3 del chatbot de la Universidad del Magdalena' }
     ],
     featuresList: [
       'Comprensión avanzada de lenguaje natural para consultas informales de estudiantes.',
