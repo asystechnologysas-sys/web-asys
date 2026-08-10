@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASYS Technology S.A.S. | Automatización, Soluciones y Sistemas Inteligentes</title>
+  <meta name="description" content="Sociedad de tecnología e innovación en Colombia e Internacional. Especializados en desarrollo de software, inteligencia artificial, automatización de procesos legales y gestión integral de datos.">
+  <meta name="keywords" content="ASYS Technology S.A.S., Automatización de Procesos, Inteligencia Artificial Colombia, LegalTech, Desarrollo de Software, RPA, Eficiencia Operativa">
+  <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Ambient Background Accents -->
+  <div class="bg-ambient-lights">
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#inicio" class="brand-logo">
+        <img src="/assets/logo.jpg" alt="ASYS Technology S.A.S. Logo">
+        <div class="brand-text">
+          <span class="brand-name">ASYS TECHNOLOGY <small style="font-size:0.75rem; color:var(--blue-primary);">S.A.S.</small></span>
+          <span class="brand-tagline">AUTOMATIZACIÓN • SOLUCIONES • SISTEMAS</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#inicio" class="active">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#repositorio">Repositorio de Proyectos</a></li>
+        <li><a href="#simulador">Simulador 3D</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <!-- Social icons in navbar (desktop) -->
+      <div class="nav-social-row">
+        <a href="https://www.instagram.com/asys.tech/" target="_blank" rel="noopener noreferrer" class="nav-social-btn instagram" title="Instagram ASYS Technology">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61592250486168" target="_blank" rel="noopener noreferrer" class="nav-social-btn facebook" title="Facebook ASYS Technology">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://wa.me/573117304768" target="_blank" rel="noopener noreferrer" class="nav-social-btn whatsapp" title="WhatsApp ASYS Technology">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir Menú">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge">
+          <i data-lucide="cpu"></i> Transformación Digital & Eficiencia Operativa
+        </div>
+        <h1 class="hero-title">
+          Impulsamos tu Empresa con <span class="gradient-text">Automatización & Sistemas Inteligentes</span>
+        </h1>
+        <p class="hero-description">
+          ASYS Technology S.A.S. convierte procesos operativos complejos y tareas repetitivas en flujos de trabajo autónomos acelerados por Inteligencia Artificial y arquitecturas de software robustas.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#repositorio" class="btn btn-primary">
+            <i data-lucide="folder-git-2"></i> Ver Repositorio de Casos
+          </a>
+          <a href="#contacto" class="btn btn-secondary">
+            <i data-lucide="mail"></i> Contactar a un Experto
+          </a>
+        </div>
+
+        <div class="stats-banner">
+          <div class="stat-item">
+            <h3>+350k</h3>
+            <p>Horas Operativas Ahorradas</p>
+          </div>
+          <div class="stat-item">
+            <h3>99.7%</h3>
+            <p>Precisión en Procesos AI</p>
+          </div>
+          <div class="stat-item">
+            <h3>3.8x</h3>
+            <p>Retorno Medio de Inversión</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Canvas Visualizer -->
+      <div class="hero-3d-wrapper">
+        <div id="canvas-hero-3d"></div>
+        <div class="canvas-overlay-card">
+          <div class="pulse-dot"></div>
+          <div class="canvas-overlay-text">
+            <p>Núcleo ASYS 3D en Vivo</p>
+            <span>Orquestador de Automatizaciones Interactivo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="services-section" id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i data-lucide="layers"></i> Capacidades Core</div>
+        <h2 class="section-title">Soluciones Tecnológicas de Alto Impacto</h2>
+        <p class="section-description">
+          Construimos arquitecturas digitales a medida para optimizar tiempo, reducir costos y eliminar errores humanos en tu organización.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="clean-card service-card">
+          <div class="service-icon"><i data-lucide="bot"></i></div>
+          <h3 class="service-title">Automatización de Procesos (RPA)</h3>
+          <p class="service-desc">
+            Robots de software para la ejecución rápida de tareas repetitivas entre sistemas empresariales, ERPs, facturación y correo.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle-2"></i> Integración con SAP, Siigo, Alegra y Portales</li>
+            <li><i data-lucide="check-circle-2"></i> Conciliación contable y bancaria en segundos</li>
+            <li><i data-lucide="check-circle-2"></i> Extracción y procesamiento masivo de datos</li>
+          </ul>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="clean-card service-card">
+          <div class="service-icon"><i data-lucide="scale"></i></div>
+          <h3 class="service-title">Automatización Legal (LegalTech)</h3>
+          <p class="service-desc">
+            Sistemas inteligentes adaptados al marco normativo para firmas y departamentos jurídicos.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle-2"></i> Lectura y auditoría de contratos con IA</li>
+            <li><i data-lucide="check-circle-2"></i> Seguimiento judicial y alertas de vencimiento</li>
+            <li><i data-lucide="check-circle-2"></i> Generación automatizada de respuestas legales</li>
+          </ul>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="clean-card service-card">
+          <div class="service-icon"><i data-lucide="sparkles"></i></div>
+          <h3 class="service-title">Inteligencia Artificial & Agentes IA</h3>
+          <p class="service-desc">
+            Agentes conversacionales autónomos entrenados con los datos privados de tu negocio para atención y operaciones 24/7.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle-2"></i> Agentes WhatsApp Business & Omnicanal</li>
+            <li><i data-lucide="check-circle-2"></i> Modelos RAG para búsqueda en bases de conocimiento</li>
+            <li><i data-lucide="check-circle-2"></i> Clasificación y ruteo predictivo de prospectos</li>
+          </ul>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="clean-card service-card">
+          <div class="service-icon"><i data-lucide="code-2"></i></div>
+          <h3 class="service-title">Desarrollo de Software a Medida</h3>
+          <p class="service-desc">
+            Plataformas web, dashboards, APIs y microservicios escalables construidos con estándares internacionales.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle-2"></i> Aplicaciones web progresivas y portales</li>
+            <li><i data-lucide="check-circle-2"></i> Arquitecturas Cloud en AWS, Azure y GCP</li>
+            <li><i data-lucide="check-circle-2"></i> APIs seguras y microservicios de alto rendimiento</li>
+          </ul>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="clean-card service-card">
+          <div class="service-icon"><i data-lucide="database"></i></div>
+          <h3 class="service-title">Gestión Integral de Datos & BI</h3>
+          <p class="service-desc">
+            Transformamos volúmenes de datos dispersos en pipelines analíticos limpios y tableros interactivos de toma de decisiones.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle-2"></i> Pipelines ETL y almacenamiento unificado</li>
+            <li><i data-lucide="check-circle-2"></i> Dashboards analíticos en tiempo real</li>
+            <li><i data-lucide="check-circle-2"></i> Modelos predictivos de demanda y riesgos</li>
+          </ul>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="clean-card service-card">
+          <div class="service-icon"><i data-lucide="compass"></i></div>
+          <h3 class="service-title">Consultoría Tecnológica Estratégica</h3>
+          <p class="service-desc">
+            Evaluación técnica de madurez digital, hoja de ruta de automatización e implementación de soluciones.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle-2"></i> Auditoría de procesos operativos actuales</li>
+            <li><i data-lucide="check-circle-2"></i> Diseño de arquitectura e infraestructura</li>
+            <li><i data-lucide="check-circle-2"></i> Acompañamiento y capacitación continua</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPOSITORY OF PROJECTS SECTION (PORTFOLIO SHOWCASE) -->
+  <section class="repository-section" id="repositorio">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i data-lucide="folder-git-2"></i> Casos Reales & Repositorio</div>
+        <h2 class="section-title">Repositorio de Proyectos Ejecutados</h2>
+        <p class="section-description">
+          Conoce los 3 proyectos reales desarrollados por ASYS Technology S.A.S. para negocios de barrio y proyectos académicos universitarios.
+        </p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="repo-filter-bar">
+        <button class="filter-btn active" data-filter="all">Todos los Proyectos (3)</button>
+        <button class="filter-btn" data-filter="inventarios">Software & Inventarios</button>
+        <button class="filter-btn" data-filter="servicios">Barberías & Servicios</button>
+        <button class="filter-btn" data-filter="ia">IA & Unimagdalena</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW SIMULATOR SECTION -->
+  <section class="workflow-section" id="simulador">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i data-lucide="workflow"></i> Simulación en Vivo</div>
+        <h2 class="section-title">Así Funciona una Automatización ASYS</h2>
+        <p class="section-description">
+          Presiona el botón de ejecución para observar el recorrido inteligente desde la recepción de la información hasta el resultado final.
+        </p>
+      </div>
+
+      <div class="clean-card pipeline-container">
+        <div class="pipeline-steps-grid">
+          <div class="pipeline-step-card active-step" id="step-1">
+            <div class="step-num">1</div>
+            <h4>Ingreso de Datos</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
+              Recepción automática vía Email, WhatsApp o API.
+            </p>
+          </div>
+
+          <div class="pipeline-step-card" id="step-2">
+            <div class="step-num">2</div>
+            <h4>Procesamiento IA</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
+              OCR, lectura de contratos y validación de reglas de negocio.
+            </p>
+          </div>
+
+          <div class="pipeline-step-card" id="step-3">
+            <div class="step-num">3</div>
+            <h4>Ejecución RPA & API</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
+              Actualización en ERP, generación de PDF y DIAN.
+            </p>
+          </div>
+
+          <div class="pipeline-step-card" id="step-4">
+            <div class="step-num">4</div>
+            <h4>Notificación & Analytics</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
+              Alertas inmediatas al cliente y registro en tablero BI.
+            </p>
+          </div>
+        </div>
+
+        <div class="sim-controls">
+          <button class="btn btn-primary" id="btn-run-simulation">
+            <i data-lucide="play-circle"></i> Ejecutar Simulación de Flujo
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials-section" id="testimonios">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge"><i data-lucide="message-square-quote"></i> Experiencias Reales</div>
+        <h2 class="section-title">Testimonios de Nuestros Usuarios y Clientes</h2>
+        <p class="section-description">
+          Conoce cómo impactamos el día a día de pequeños negocios y proyectos de tecnología.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="clean-card testimonial-card">
+          <div>
+            <div class="quote-stars">★★★★★</div>
+            <p class="testimonial-quote">
+              "Antes todo lo anotaba en un cuaderno y no sabía qué productos se vencían ni cuánto vendía por Nequi. Ahora registro mis ventas en segundos, controlo fiados e inventario sin enredarme."
+            </p>
+          </div>
+          <div class="client-profile">
+            <div class="client-avatar" style="background:#1b56ca;">SL</div>
+            <div class="client-meta">
+              <h4>Sra. Luzmila</h4>
+              <p>Propietaria - Tienda de Barrio</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="clean-card testimonial-card">
+          <div>
+            <div class="quote-stars">★★★★★</div>
+            <p class="testimonial-quote">
+              "Perdía tiempo respondiendo chats en WhatsApp mientras atendía a un cliente. Ahora mis clientes agendan su cita solos, eligen el servicio y el sistema les recuerda la hora. Mi agenda siempre está organizada."
+            </p>
+          </div>
+          <div class="client-profile">
+            <div class="client-avatar" style="background:#0f172a;">JM</div>
+            <div class="client-meta">
+              <h4>Jorge Mendoza</h4>
+              <p>Barbero Profesional - Barbería de Barrio</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="clean-card testimonial-card">
+          <div>
+            <div class="quote-stars">★★★★★</div>
+            <p class="testimonial-quote">
+              "El desarrollo de este chatbot con Procesamiento de Lenguaje Natural representó un logro clave en nuestra experiencia académica. Logramos ayudar a cientos de compañeros de Ingeniería de Sistemas de la Universidad del Magdalena."
+            </p>
+          </div>
+          <div class="client-profile">
+            <div class="client-avatar" style="background:#0284c7;">JN</div>
+            <div class="client-meta">
+              <h4>José Narváez</h4>
+              <p>Estudiante Ing. de Sistemas - Unimagdalena</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & CONSULTATION SECTION -->
+  <section class="contact-section" id="contacto">
+    <div class="container">
+      <div class="clean-card contact-card-wrapper">
+        <div class="contact-info">
+          <div>
+            <div class="badge"><i data-lucide="headset"></i> Hablemos de tu Proyecto</div>
+            <h2 class="section-title" style="text-align:left;">Transforma la Eficiencia de tu Negocio Hoy</h2>
+            <p class="section-description" style="text-align:left;">
+              Ponte en contacto con nuestros especialistas en automatización e Inteligencia Artificial. Tu solicitud quedará registrada de forma segura en nuestro sistema.
+            </p>
+          </div>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-item-icon"><i data-lucide="building-2"></i></div>
+              <div>
+                <strong>ASYS Technology S.A.S.</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Automatización, Soluciones y Sistemas Inteligentes</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i data-lucide="map-pin"></i></div>
+              <div>
+                <strong>Cobertura</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Colombia & Operaciones Internacionales</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i data-lucide="mail"></i></div>
+              <div>
+                <strong>Correo Electrónico Directo</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted);">contacto@asystechnology.com.co</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Redes Sociales en sección de contacto -->
+          <div style="margin-top:24px;">
+            <p style="font-size:0.82rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px;">Síguenos en Redes Sociales</p>
+            <div class="contact-social-bar">
+              <a href="https://www.instagram.com/asys.tech/" target="_blank" rel="noopener noreferrer" class="contact-social-link instagram-pill">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill:#fff; width:18px; height:18px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                @asys.tech
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61592250486168" target="_blank" rel="noopener noreferrer" class="contact-social-link facebook-pill">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill:#fff; width:18px; height:18px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                ASYS Technology
+              </a>
+              <a href="https://wa.me/573117304768" target="_blank" rel="noopener noreferrer" class="contact-social-link whatsapp-pill">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill:#fff; width:18px; height:18px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                +57 311 730 4768
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="main-contact-form">
+          <div class="form-group">
+            <label for="form-name">Nombre Completo</label>
+            <input type="text" id="form-name" class="form-input" placeholder="Ej: Carlos Ramírez" required>
+          </div>
+
+          <div class="form-group">
+            <label for="form-email">Correo Corporativo</label>
+            <input type="email" id="form-email" class="form-input" placeholder="carlos@tuempresa.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="form-phone">Teléfono / WhatsApp</label>
+            <input type="tel" id="form-phone" class="form-input" placeholder="+57 300 123 4567" required>
+          </div>
+
+          <div class="form-group">
+            <label for="form-service">Área de Interés Principal</label>
+            <select id="form-service" class="form-select">
+              <option value="rpa">Automatización de Procesos (RPA)</option>
+              <option value="legal">Automatización de Procesos Legales (LegalTech)</option>
+              <option value="ai">Inteligencia Artificial & Agentes IA</option>
+              <option value="software">Desarrollo de Software a Medida</option>
+              <option value="data">Gestión Integral de Datos & BI</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="form-message">Detalles del Proceso a Automatizar</label>
+            <textarea id="form-message" rows="4" class="form-textarea" placeholder="Cuéntanos brevemente qué proceso deseas optimizar..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="btn-submit-form" style="width:100%;">
+            <i data-lucide="send"></i> Registrar &amp; Enviar Mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="clean-card modal-content-card" id="modal-body-content">
+      <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      <!-- Populated via JS -->
+    </div>
+  </div>
+
+  <!-- NOTIFICATION MODAL -->
+  <div class="modal-overlay notification-overlay" id="notification-modal">
+    <div class="clean-card notification-card">
+      <div class="notification-icon-wrap" id="notification-icon"></div>
+      <h3 class="notification-title" id="notification-title"></h3>
+      <p class="notification-message" id="notification-message"></p>
+      <button type="button" class="btn btn-primary notification-btn" id="notification-close">
+        Entendido
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#inicio" class="brand-logo" style="margin-bottom:16px;">
+            <img src="/assets/logo.jpg" alt="ASYS Technology S.A.S. Logo">
+            <div class="brand-text">
+              <span class="brand-name">ASYS TECHNOLOGY S.A.S.</span>
+              <span class="brand-tagline">AUTOMATIZACIÓN • SOLUCIONES • SISTEMAS</span>
+            </div>
+          </a>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin-bottom:18px;">
+            ASYS technology S.A.S. es una sociedad de tecnología e innovación enfocada en la transformación digital y eficiencia operativa. Desarrollo de software, IA, automatización legal y datos.
+          </p>
+          <!-- Social links en el footer -->
+          <div class="social-links-row">
+            <a href="https://www.instagram.com/asys.tech/" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Instagram ASYS Technology">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61592250486168" target="_blank" rel="noopener noreferrer" class="social-btn facebook" title="Facebook ASYS Technology">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://wa.me/573117304768" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp" title="WhatsApp +57 311 730 4768">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#repositorio">Repositorio de Proyectos</a></li>
+            <li><a href="#simulador">Simulador 3D</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Servicios Core</h4>
+          <ul class="footer-links">
+            <li><a href="#servicios">Robótica de Procesos (RPA)</a></li>
+            <li><a href="#servicios">Automatización LegalTech</a></li>
+            <li><a href="#servicios">Agentes de IA Autónomos</a></li>
+            <li><a href="#servicios">Desarrollo de Software</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Contacto</h4>
+          <ul class="footer-links">
+            <li><a href="#contacto">Contacto Comercial</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Términos de Servicio</a></li>
+            <li><a href="#">Tratamiento de Datos Personales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ASYS Technology S.A.S. Todos los derechos reservados.</p>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:0.82rem; color:#94a3b8;">Colombia • Internacional</span>
+          <a href="https://www.instagram.com/asys.tech/" target="_blank" rel="noopener noreferrer" title="Instagram" style="opacity:0.7; transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:18px; height:18px; fill:#e1306c;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61592250486168" target="_blank" rel="noopener noreferrer" title="Facebook" style="opacity:0.7; transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:18px; height:18px; fill:#1877f2;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://wa.me/573117304768" target="_blank" rel="noopener noreferrer" title="WhatsApp" style="opacity:0.7; transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:18px; height:18px; fill:#25d366;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
