@@ -154,16 +154,23 @@ function openProjectModal(projectId) {
         <i data-lucide="image"></i> Galería de Fotos & Capturas del Proyecto
       </h3>
 
-      <div id="gallery-container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-bottom:16px;">
-        ${project.images.map(img => `
-          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border-hairline); background:#000;">
-            <img src="${img.url}" alt="${img.caption}" style="width:100%; height:200px; object-fit:cover; display:block;">
-            <div style="padding:10px 14px; background:var(--bg-card-subtle); font-size:0.8rem; color:var(--text-muted); font-weight:600;">
-              ${img.caption}
-            </div>
+      <div id="gallery-container" class="project-gallery-carousel">
+        <div class="project-gallery-viewport">
+          <div class="project-gallery-track">
+            ${project.images.map((img, index) => `
+              <div class="project-gallery-slide" aria-hidden="${index === 0 ? 'false' : 'true'}">
+                <img src="${img.url}" alt="${img.caption}">
+              </div>
+            `).join('')}
           </div>
-        `).join('')}
-
+          <button class="project-gallery-control project-gallery-prev" type="button" aria-label="Ver imagen anterior" ${project.images.length < 2 ? 'disabled' : ''}>
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <button class="project-gallery-control project-gallery-next" type="button" aria-label="Ver imagen siguiente" ${project.images.length < 2 ? 'disabled' : ''}>
+            <i data-lucide="chevron-right"></i>
+          </button>
+        </div>
+        <div class="project-gallery-caption">${project.images[0]?.caption || ''}</div>
       </div>
 
     </div>
@@ -234,6 +241,31 @@ function openProjectModal(projectId) {
 
   createIcons({ icons });
   modal.classList.add('active');
+
+  const gallery = document.getElementById('gallery-container');
+  const galleryTrack = gallery?.querySelector('.project-gallery-track');
+  const galleryCaption = gallery?.querySelector('.project-gallery-caption');
+  const gallerySlides = gallery ? Array.from(gallery.querySelectorAll('.project-gallery-slide')) : [];
+  let currentSlide = 0;
+
+  const showGallerySlide = (index) => {
+    if (!galleryTrack || gallerySlides.length < 2) return;
+
+    currentSlide = (index + gallerySlides.length) % gallerySlides.length;
+    galleryTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    gallerySlides.forEach((slide, slideIndex) => {
+      slide.setAttribute('aria-hidden', String(slideIndex !== currentSlide));
+    });
+    galleryCaption.textContent = project.images[currentSlide].caption;
+  };
+
+  gallery?.querySelector('.project-gallery-prev')?.addEventListener('click', () => {
+    showGallerySlide(currentSlide - 1);
+  });
+
+  gallery?.querySelector('.project-gallery-next')?.addEventListener('click', () => {
+    showGallerySlide(currentSlide + 1);
+  });
 
   const closeBtn = document.getElementById('modal-close-btn');
   closeBtn.addEventListener('click', () => {
