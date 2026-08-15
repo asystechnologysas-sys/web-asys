@@ -357,6 +357,28 @@ function setupNavbar() {
     }
   });
 
+  const sectionLinks = Array.from(navLinks?.querySelectorAll('a[href^="#"]') || []);
+  const navigationSections = sectionLinks
+    .map(link => ({ link, section: document.querySelector(link.getAttribute('href')) }))
+    .filter(({ section }) => section);
+
+  const updateActiveLink = () => {
+    const referencePoint = window.scrollY + (navbar?.offsetHeight || 0) + 24;
+    let activeSection = navigationSections[0];
+
+    navigationSections.forEach(item => {
+      if (item.section.offsetTop <= referencePoint) activeSection = item;
+    });
+
+    sectionLinks.forEach(link => {
+      link.classList.toggle('active', link === activeSection?.link);
+    });
+  };
+
+  updateActiveLink();
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  window.addEventListener('resize', updateActiveLink);
+
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       if (navLinks.classList.contains('open')) {
@@ -368,6 +390,7 @@ function setupNavbar() {
 
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
+        sectionLinks.forEach(navLink => navLink.classList.toggle('active', navLink === link));
         closeMobileMenu();
       });
     });
