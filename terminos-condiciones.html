@@ -19,6 +19,22 @@
           <span class="brand-tagline">AUTOMATIZACIÓN • SOLUCIONES • SISTEMAS INTELIGENTES</span>
         </div>
       </div>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#proyectos">Proyectos</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="politica-privacidad.html">Privacidad</a></li>
+          <li><a href="terminos-condiciones.html" class="active">Términos</a></li>
+          <li><a href="tratamiento-datos.html">Datos</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" type="button">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
   </header>
 
@@ -92,5 +108,17 @@
       </div>
     </section>
   </main>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+  </script>
 </body>
 </html>

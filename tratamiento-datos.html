@@ -19,6 +19,22 @@
           <span class="brand-tagline">AUTOMATIZACIÓN • SOLUCIONES • SISTEMAS INTELIGENTES</span>
         </div>
       </div>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#proyectos">Proyectos</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="politica-privacidad.html">Privacidad</a></li>
+          <li><a href="terminos-condiciones.html">Términos</a></li>
+          <li><a href="tratamiento-datos.html" class="active">Datos</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" type="button">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
   </header>
   <main>
@@ -30,7 +46,15 @@
       </div>
     </section>
     <section class="legal-section">
-      <div class="container">
+      <div class="container legal-layout">
+        <aside class="legal-sidebar clean-card">
+          <div class="legal-sidebar-title"><i class="fa-solid fa-list"></i> Contenido</div>
+          <nav class="legal-index">
+            <a href="#informacion">1. Información</a>
+            <a href="#seguridad">2. Seguridad y conservación</a>
+          </nav>
+        </aside>
+
         <article class="legal-document clean-card">
           <div class="legal-document-header">
             <div class="legal-document-icon"><i class="fa-solid fa-database"></i></div>
@@ -39,14 +63,14 @@
               <h2>Tratamiento de Datos Personales</h2>
             </div>
           </div>
-          <section class="legal-block">
+          <section class="legal-block" id="informacion">
             <span class="legal-number">01</span>
             <div>
               <h2>Información</h2>
               <p>Cuando usted comparte datos a través del formulario o corresponde con la empresa, esos datos se utilizan para atender solicitudes comerciales, administrativas y legales.</p>
             </div>
           </section>
-          <section class="legal-block">
+          <section class="legal-block" id="seguridad">
             <span class="legal-number">02</span>
             <div>
               <h2>Seguridad y conservación</h2>
@@ -57,5 +81,17 @@
       </div>
     </section>
   </main>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+  </script>
 </body>
 </html>
