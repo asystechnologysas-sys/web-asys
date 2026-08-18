@@ -814,6 +814,12 @@ h1, h2, h3, h4 {
   border-radius: var(--radius-md);
 }
 
+.intelligence-analysis[hidden],
+.intelligence-result[hidden],
+.intelligence-reset[hidden] {
+  display: none !important;
+}
+
 .intelligence-analysis::after {
   content: '';
   position: absolute;
@@ -849,6 +855,7 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: minmax(210px, 0.75fr) minmax(0, 1.25fr);
   gap: 34px;
+  margin-top: 22px;
   align-items: center;
   animation: intelligence-reveal 0.5s ease both;
 }
