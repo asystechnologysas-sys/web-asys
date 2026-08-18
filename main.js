@@ -114,17 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ===================================================
-     WORKFLOW SIMULATOR
+     ASYS INTELLIGENCE DIAGNOSTIC
      =================================================== */
 
   try {
 
-    setupWorkflowSimulator();
+    setupIntelligenceDiagnostic();
 
   } catch (err) {
 
     console.warn(
-      'Workflow simulator fallback:',
+      'Intelligence diagnostic fallback:',
       err
     );
   }
@@ -184,6 +184,130 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 });
+
+
+/* =====================================================
+   ASYS INTELLIGENCE PLATFORM DIAGNOSTIC
+   ===================================================== */
+
+function setupIntelligenceDiagnostic() {
+
+  const form = document.getElementById('intelligence-form');
+  const analysis = document.getElementById('intelligence-analysis');
+  const result = document.getElementById('intelligence-result');
+  const reset = document.getElementById('intelligence-reset');
+
+  if (!form || !analysis || !result || !reset) return;
+
+  const analysisMessage = document.getElementById('analysis-message');
+  const analysisProgress = document.getElementById('analysis-progress-bar');
+  const analysisProgressValue = document.getElementById('analysis-progress-value');
+  const scoreElement = document.getElementById('potential-score');
+  const scoreProgress = document.getElementById('score-progress-bar');
+  const opportunitySummary = document.getElementById('opportunity-summary');
+  const opportunityList = document.getElementById('opportunity-list');
+  const analysisSteps = [
+    'Analizando sitio web...',
+    'Analizando atención al cliente...',
+    'Analizando procesos repetitivos...',
+    'Analizando oportunidades de automatización...',
+    'Generando diagnóstico...'
+  ];
+
+  const calculateScore = values => {
+    const companyPoints = {
+      restaurante: 22, comercio: 20, servicios: 19,
+      salud: 18, educacion: 16, otro: 14
+    };
+    let score = companyPoints[values.companyType] || 14;
+    score += values.website === 'yes' ? 14 : 7;
+    score += values.whatsapp === 'yes' ? 20 : 5;
+    score += values.repetitive === 'yes' ? 22 : 8;
+    score += values.crm === 'no' ? 20 : 11;
+    return Math.min(98, Math.max(45, score));
+  };
+
+  const getOpportunities = values => [
+    values.whatsapp === 'yes'
+      ? 'Automatización de respuestas por WhatsApp'
+      : 'Implementación de atención automatizada por WhatsApp',
+    values.repetitive === 'yes'
+      ? 'Captación y clasificación automática de leads'
+      : 'Centralización inteligente de consultas y solicitudes',
+    values.crm === 'no'
+      ? 'Seguimiento automático de clientes y prospectos'
+      : 'Automatización de seguimientos desde su CRM',
+    'Integración entre sistemas y canales de atención',
+    'Generación automática de reportes operativos'
+  ];
+
+  const animateScore = score => {
+    const start = performance.now();
+    const duration = 1100;
+    const update = now => {
+      const progress = Math.min((now - start) / duration, 1);
+      const currentScore = Math.round(score * (1 - Math.pow(1 - progress, 3)));
+      scoreElement.textContent = currentScore;
+      scoreProgress.style.width = `${currentScore}%`;
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  };
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const values = {
+      companyType: data.get('company-type'), website: data.get('website'),
+      whatsapp: data.get('whatsapp'), repetitive: data.get('repetitive'), crm: data.get('crm')
+    };
+    const score = calculateScore(values);
+    const opportunities = getOpportunities(values);
+
+    form.hidden = true;
+    analysis.hidden = false;
+    result.hidden = true;
+    reset.hidden = true;
+    analysisProgress.style.width = '0%';
+    analysisProgressValue.textContent = '0%';
+
+    analysisSteps.forEach((message, index) => {
+      window.setTimeout(() => {
+        const progress = Math.round(((index + 1) / analysisSteps.length) * 100);
+        analysisMessage.textContent = message;
+        analysisProgress.style.width = `${progress}%`;
+        analysisProgressValue.textContent = `${progress}%`;
+      }, index * 620);
+    });
+
+    window.setTimeout(() => {
+      analysis.hidden = true;
+      opportunitySummary.textContent = `ASYS detectó ${opportunities.length} oportunidades de automatización para tu empresa.`;
+      opportunityList.innerHTML = opportunities
+        .map((opportunity, index) => `<div class="opportunity-item" style="animation-delay:${index * 90}ms"><i data-lucide="check-circle-2"></i><span>${opportunity}</span></div>`)
+        .join('');
+      result.hidden = false;
+      reset.hidden = false;
+      animateScore(score);
+
+      try {
+        createIcons({ icons });
+      } catch (err) {
+        console.warn('Diagnostic icon refresh fallback:', err);
+      }
+    }, analysisSteps.length * 620 + 150);
+  });
+
+  reset.addEventListener('click', () => {
+    form.reset();
+    result.hidden = true;
+    reset.hidden = true;
+    form.hidden = false;
+    form.querySelector('#company-type')?.focus();
+  });
+}
 
 
 /* =====================================================
@@ -1058,7 +1182,7 @@ function openProjectModal(projectId) {
         "
       >
         <strong>
-          Con ASYS Technology S.A.S.:
+          Con ASYS Technology:
         </strong>
 
         ${project.beforeVsAfter.after}
@@ -1296,162 +1420,6 @@ document
 
     }
   );
-
-
-/* =====================================================
-   WORKFLOW SIMULATOR
-   ===================================================== */
-
-function setupWorkflowSimulator() {
-
-  const btnRun =
-    document.getElementById(
-      'btn-run-simulation'
-    );
-
-
-  const steps = [
-
-    document.getElementById(
-      'step-1'
-    ),
-
-    document.getElementById(
-      'step-2'
-    ),
-
-    document.getElementById(
-      'step-3'
-    ),
-
-    document.getElementById(
-      'step-4'
-    )
-
-  ];
-
-
-  if (
-    !btnRun ||
-    !steps[0]
-  ) {
-    return;
-  }
-
-
-  btnRun.addEventListener(
-    'click',
-    () => {
-
-      btnRun.disabled = true;
-
-
-      btnRun.innerHTML =
-        '<i data-lucide="loader"></i> Ejecutando Simulación...';
-
-
-      try {
-
-        createIcons({ icons });
-
-      } catch (err) {
-
-        console.warn(
-          'Workflow icon fallback:',
-          err
-        );
-
-      }
-
-
-      steps.forEach(
-        s =>
-          s?.classList.remove(
-            'active-step'
-          )
-      );
-
-
-      let currentStep = 0;
-
-
-      const interval =
-        setInterval(
-          () => {
-
-            if (
-              currentStep > 0
-            ) {
-
-              steps[
-                currentStep - 1
-              ]?.classList.remove(
-                'active-step'
-              );
-
-            }
-
-
-            if (
-              currentStep <
-              steps.length
-            ) {
-
-              steps[
-                currentStep
-              ]?.classList.add(
-                'active-step'
-              );
-
-              currentStep++;
-
-            } else {
-
-              clearInterval(
-                interval
-              );
-
-
-              steps[
-                steps.length - 1
-              ]?.classList.add(
-                'active-step'
-              );
-
-
-              btnRun.disabled =
-                false;
-
-
-              btnRun.innerHTML =
-                '<i data-lucide="play-circle"></i> Ejecutar Nuevamente';
-
-
-              try {
-
-                createIcons({
-                  icons
-                });
-
-              } catch (err) {
-
-                console.warn(
-                  'Workflow icon refresh fallback:',
-                  err
-                );
-
-              }
-
-            }
-
-          },
-          1200
-        );
-
-    }
-  );
-
-}
 
 
 /* =====================================================
@@ -1879,7 +1847,7 @@ function setupContactForm() {
             '¡Solicitud registrada!',
 
           message:
-            `Gracias ${name}. Tu mensaje ha sido guardado correctamente. El equipo de ASYS Technology S.A.S. te contactará en breve.`
+            `Gracias ${name}. Tu mensaje ha sido guardado correctamente. El equipo de ASYS Technology te contactará en breve.`
 
         });
 

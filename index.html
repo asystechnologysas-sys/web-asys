@@ -39,9 +39,9 @@
   <header class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="#inicio" class="brand-logo">
-        <img src="/assets/logo.jpg" alt="ASYS Technology S.A.S. Logo">
+        <img src="/assets/logo.jpg" alt="ASYS Technology Logo">
         <div class="brand-text">
-          <span class="brand-name">ASYS TECHNOLOGY <small style="font-size:0.75rem; color:var(--blue-primary);">S.A.S.</small></span>
+          <span class="brand-name">ASYS TECHNOLOGY</span>
           <span class="brand-tagline">AUTOMATIZACIÓN • SOLUCIONES • SISTEMAS</span>
         </div>
       </a>
@@ -50,7 +50,6 @@
         <li><a href="#inicio" class="active">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#repositorio">Repositorio de Proyectos</a></li>
-        <li><a href="#simulador">Simulador 3D</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
 
@@ -251,57 +250,103 @@
     </div>
   </section>
 
-  <!-- WORKFLOW SIMULATOR SECTION -->
-  <section class="workflow-section" id="simulador">
+  <!-- ASYS INTELLIGENCE PLATFORM DIAGNOSTIC -->
+  <section class="intelligence-section" id="diagnostico">
     <div class="container">
       <div class="section-header">
-        <div class="badge"><i data-lucide="workflow"></i> Simulación en Vivo</div>
-        <h2 class="section-title">Así Funciona una Automatización ASYS</h2>
+        <div class="badge"><i data-lucide="sparkles"></i> ASYS Intelligence Platform</div>
+        <h2 class="section-title">Descubre el potencial de automatización de tu empresa</h2>
         <p class="section-description">
-          Presiona el botón de ejecución para observar el recorrido inteligente desde la recepción de la información hasta el resultado final.
+          ASYS analiza tu operación, detecta tareas repetitivas y encuentra oportunidades para automatizar procesos.
         </p>
       </div>
 
-      <div class="clean-card pipeline-container">
-        <div class="pipeline-steps-grid">
-          <div class="pipeline-step-card active-step" id="step-1">
-            <div class="step-num">1</div>
-            <h4>Ingreso de Datos</h4>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
-              Recepción automática vía Email, WhatsApp o API.
-            </p>
+      <div class="intelligence-card clean-card" id="intelligence-card">
+        <div class="intelligence-card-heading">
+          <div class="intelligence-icon"><i data-lucide="brain-circuit"></i></div>
+          <div>
+            <span>Diagnóstico inteligente</span>
+            <h3>Cuéntanos cómo opera tu empresa</h3>
           </div>
-
-          <div class="pipeline-step-card" id="step-2">
-            <div class="step-num">2</div>
-            <h4>Procesamiento IA</h4>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
-              OCR, lectura de contratos y validación de reglas de negocio.
-            </p>
-          </div>
-
-          <div class="pipeline-step-card" id="step-3">
-            <div class="step-num">3</div>
-            <h4>Ejecución RPA & API</h4>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
-              Actualización en ERP, generación de PDF y DIAN.
-            </p>
-          </div>
-
-          <div class="pipeline-step-card" id="step-4">
-            <div class="step-num">4</div>
-            <h4>Notificación & Analytics</h4>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
-              Alertas inmediatas al cliente y registro en tablero BI.
-            </p>
-          </div>
+          <div class="intelligence-live"><span></span> ASYS ANALYZING</div>
         </div>
 
-        <div class="sim-controls">
-          <button class="btn btn-primary" id="btn-run-simulation">
-            <i data-lucide="play-circle"></i> Ejecutar Simulación de Flujo
+        <form class="intelligence-form" id="intelligence-form">
+          <div class="intelligence-question company-type-question">
+            <label for="company-type">Tipo de empresa</label>
+            <select id="company-type" name="company-type" class="form-select" required>
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="restaurante">Restaurante</option>
+              <option value="comercio">Comercio</option>
+              <option value="servicios">Servicios</option>
+              <option value="salud">Salud</option>
+              <option value="educacion">Educación</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <fieldset class="intelligence-question">
+            <legend>¿Tiene sitio web?</legend>
+            <div class="choice-group">
+              <label class="choice-chip"><input type="radio" name="website" value="yes" required><span>Sí</span></label>
+              <label class="choice-chip"><input type="radio" name="website" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="intelligence-question">
+            <legend>¿Utiliza WhatsApp para atender clientes?</legend>
+            <div class="choice-group">
+              <label class="choice-chip"><input type="radio" name="whatsapp" value="yes" required><span>Sí</span></label>
+              <label class="choice-chip"><input type="radio" name="whatsapp" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="intelligence-question">
+            <legend>¿Recibe consultas o solicitudes repetitivas?</legend>
+            <div class="choice-group">
+              <label class="choice-chip"><input type="radio" name="repetitive" value="yes" required><span>Sí</span></label>
+              <label class="choice-chip"><input type="radio" name="repetitive" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="intelligence-question">
+            <legend>¿Actualmente utiliza algún CRM o sistema?</legend>
+            <div class="choice-group">
+              <label class="choice-chip"><input type="radio" name="crm" value="yes" required><span>Sí</span></label>
+              <label class="choice-chip"><input type="radio" name="crm" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+
+          <button class="btn btn-primary intelligence-submit" type="submit">
+            <i data-lucide="scan-search"></i> Analizar mi empresa
           </button>
+        </form>
+
+        <div class="intelligence-analysis" id="intelligence-analysis" aria-live="polite" hidden>
+          <div class="analysis-scanner"><i data-lucide="radar"></i></div>
+          <div>
+            <span class="analysis-eyebrow">ASYS Intelligence en acción</span>
+            <p class="analysis-message" id="analysis-message">Preparando diagnóstico...</p>
+            <div class="analysis-progress"><span id="analysis-progress-bar"></span></div>
+          </div>
+          <strong id="analysis-progress-value">0%</strong>
         </div>
+
+        <div class="intelligence-result" id="intelligence-result" aria-live="polite" hidden>
+          <div class="result-summary">
+            <span class="analysis-eyebrow">Potencial de automatización</span>
+            <div class="potential-score"><strong id="potential-score">0</strong><span>%</span></div>
+            <p id="opportunity-summary">ASYS detectó oportunidades de automatización.</p>
+            <div class="score-progress"><span id="score-progress-bar"></span></div>
+          </div>
+          <div class="result-opportunities">
+            <h3>Oportunidades detectadas</h3>
+            <div class="opportunity-list" id="opportunity-list"></div>
+            <a href="#contacto" class="btn btn-primary intelligence-cta"><i data-lucide="message-circle"></i> Hablar con ASYS</a>
+          </div>
+        </div>
+
+        <button type="button" class="intelligence-reset" id="intelligence-reset" hidden>Realizar otro análisis</button>
       </div>
     </div>
   </section>
@@ -502,7 +547,7 @@
       <div class="footer-grid">
         <div>
           <a href="#inicio" class="brand-logo" style="margin-bottom:16px;">
-            <img src="/assets/logo.jpg" alt="ASYS Technology S.A.S. Logo">
+            <img src="/assets/logo.jpg" alt="ASYS Technology Logo">
             <div class="brand-text">
               <span class="brand-name">ASYS TECHNOLOGY</span>
               <span class="brand-tagline">AUTOMATIZACIÓN • SOLUCIONES • SISTEMAS</span>
@@ -533,7 +578,6 @@
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#repositorio">Repositorio de Proyectos</a></li>
-            <li><a href="#simulador">Simulador 3D</a></li>
           </ul>
         </div>
 
@@ -559,7 +603,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 ASYS Technology S.A.S. Todos los derechos reservados.</p>
+        <p>&copy; 2026 ASYS Technology. Todos los derechos reservados.</p>
         <div style="display:flex; align-items:center; gap:10px;">
           <span style="font-size:0.82rem; color:#94a3b8;">Colombia • Internacional</span>
           <a href="https://www.instagram.com/asys.tech/" target="_blank" rel="noopener noreferrer" title="Instagram" style="opacity:0.7; transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
