@@ -862,7 +862,7 @@ h1, h2, h3, h4 {
 }
 
 .result-summary .analysis-eyebrow { color: #93c5fd; }
-.potential-score { display: flex; justify-content: center; align-items: flex-start; margin: 7px 0; font-family: 'Outfit', sans-serif; color: #fff; }
+.potential-score { display: flex; justify-content: center; align-items: flex-start; margin: 18px 0 10px; font-family: 'Outfit', sans-serif; color: #fff; }
 .potential-score strong { font-size: clamp(4rem, 8vw, 6rem); line-height: 0.95; letter-spacing: -0.07em; }
 .potential-score span { font-size: 1.9rem; font-weight: 800; margin-top: 7px; color: #93c5fd; }
 .result-summary p { color: #cbd5e1; font-size: 0.9rem; }
