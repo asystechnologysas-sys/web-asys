@@ -122,6 +122,19 @@ h1, h2, h3, h4 {
   box-shadow: 0 14px 35px rgba(29, 78, 216, 0.35);
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn:disabled:hover {
+  background: var(--blue-primary);
+  transform: none;
+  box-shadow: none;
+}
+
 .btn-secondary {
   background: var(--bg-surface);
   color: var(--navy-dark);
@@ -726,6 +739,7 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px 24px;
+  padding-bottom: 18px;
   position: relative;
 }
 
@@ -783,8 +797,8 @@ h1, h2, h3, h4 {
 
 .intelligence-submit {
   grid-column: span 2;
-  justify-self: start;
-  margin-top: 6px;
+  justify-self: center;
+  margin-top: 14px;
 }
 
 .intelligence-analysis {

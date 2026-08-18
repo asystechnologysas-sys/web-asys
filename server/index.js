@@ -32,10 +32,14 @@ app.get('/api/health', (_req, res) => {
 });
 
 app.post('/api/leads', (req, res) => {
-  const { name, email, phone, service, message } = req.body || {};
+  const { name, email, phone, service, message, dataConsent } = req.body || {};
 
   if (!name?.trim() || !email?.trim()) {
     return res.status(400).json({ error: 'Nombre y correo son obligatorios.' });
+  }
+
+  if (dataConsent !== true) {
+    return res.status(400).json({ error: 'Debes autorizar el tratamiento de datos personales para enviar el mensaje.' });
   }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

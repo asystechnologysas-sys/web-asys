@@ -6,7 +6,8 @@ export async function saveContactLead(leadData) {
     email: leadData.email,
     phone: leadData.phone,
     service: leadData.service,
-    message: leadData.message
+    message: leadData.message,
+    dataConsent: leadData.dataConsent
   };
 
   const response = await fetch(`${API_BASE}/leads`, {

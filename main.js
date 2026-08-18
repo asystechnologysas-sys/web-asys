@@ -1754,9 +1754,31 @@ function setupContactForm() {
     );
 
 
+  const privacyConsent =
+    document.getElementById(
+      'privacy-consent'
+    );
+
+
   if (!form) {
     return;
   }
+
+
+  const updateSubmitAvailability = () => {
+    if (submitBtn) {
+      submitBtn.disabled = !privacyConsent?.checked;
+    }
+  };
+
+
+  privacyConsent?.addEventListener(
+    'change',
+    updateSubmitAvailability
+  );
+
+
+  updateSubmitAvailability();
 
 
   form.addEventListener(
@@ -1764,6 +1786,16 @@ function setupContactForm() {
     async (e) => {
 
       e.preventDefault();
+
+
+      if (!privacyConsent?.checked) {
+        showNotification({
+          type: 'error',
+          title: 'Autorización requerida',
+          message: 'Debes autorizar el tratamiento de datos personales para enviar tu mensaje.'
+        });
+        return;
+      }
 
 
       const name =
@@ -1835,7 +1867,8 @@ function setupContactForm() {
           email,
           phone,
           service,
-          message
+          message,
+          dataConsent: true
         });
 
 
@@ -1875,8 +1908,7 @@ function setupContactForm() {
 
         if (submitBtn) {
 
-          submitBtn.disabled =
-            false;
+          updateSubmitAvailability();
 
 
           submitBtn.innerHTML =
