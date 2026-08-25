@@ -146,22 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  /* ===================================================
-     CORPORATE MOTION SYSTEM
-     =================================================== */
-
-  try {
-
-    setupMotionDesign();
-
-  } catch (err) {
-
-    console.warn(
-      'Motion design fallback:',
-      err
-    );
-  }
-
 
   /* ===================================================
      CONTACT FORM
@@ -200,46 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 });
-
-
-function setupMotionDesign() {
-
-  const selectors = [
-    '.section-header',
-    '.service-card',
-    '.project-card',
-    '.intelligence-card',
-    '.testimonial-card',
-    '.contact-card-wrapper',
-    '.footer-grid'
-  ].join(', ');
-
-  const elements = [...document.querySelectorAll(selectors)];
-  const hero = document.querySelector('.hero-content');
-
-  document.body.classList.add('motion-ready');
-  hero?.classList.add('motion-reveal', 'motion-visible');
-
-  elements.forEach((element, index) => {
-    element.classList.add('motion-reveal');
-    element.style.setProperty('--motion-delay', `${Math.min((index % 6) * 70, 350)}ms`);
-  });
-
-  if (!('IntersectionObserver' in window)) {
-    elements.forEach(element => element.classList.add('motion-visible'));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries, activeObserver) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('motion-visible');
-      activeObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.13, rootMargin: '0px 0px -35px' });
-
-  elements.forEach(element => observer.observe(element));
-}
 
 
 /* =====================================================
