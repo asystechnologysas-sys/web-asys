@@ -2646,3 +2646,135 @@ body::after {
   body::before, body::after, .hero-3d-wrapper, .hero-3d-wrapper::after, .canvas-overlay-card, .intelligence-section::before { animation: none; }
   .motion-ready .motion-reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* =====================================================
+   ASYS DIGITAL — editorial corporate layout
+   Inspired by the supplied reference: stronger hierarchy,
+   generous space and a deliberate blue visual system.
+   ===================================================== */
+:root {
+  --bg-main: #ffffff;
+  --blue-primary: #0569f7;
+  --blue-hover: #0057df;
+  --blue-light: #eaf3ff;
+  --navy-dark: #071a46;
+  --text-primary: #1b2a4b;
+  --text-muted: #68738c;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+}
+
+body { background: #fff; }
+body::before { opacity: .7; }
+.container { width: min(1180px, calc(100% - 44px)); }
+
+.navbar, .navbar.scrolled { height: 82px; padding: 0; }
+.navbar.scrolled { height: 74px; }
+.brand-logo img {
+  width: 50px;
+  height: 50px;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+  box-shadow: none;
+}
+.brand-name { font-size: 1.12rem; letter-spacing: .1em; }
+.brand-tagline { display: block; font-size: .52rem; }
+.nav-links a { font-size: .78rem; font-weight: 600; }
+.nav-contact-cta { padding: 12px 17px; border-radius: 9px; font-size: .75rem; }
+
+.hero {
+  min-height: 760px;
+  padding: 82px 0 58px;
+  background: #fff;
+}
+.hero::before { display: none; }
+.hero-grid {
+  min-height: 620px;
+  grid-template-columns: 46% 54%;
+  gap: 0;
+  width: min(1380px, 100%);
+  margin-left: auto;
+}
+.hero-content { padding: 48px clamp(24px, 5vw, 75px) 65px max(22px, calc((100vw - 1180px) / 2)); }
+.hero-title { max-width: 595px; font-size: clamp(3rem, 4.4vw, 4.5rem); line-height: 1.04; margin-bottom: 22px; }
+.hero-title::after { width: 60px; height: 3px; margin-top: 28px; }
+.hero-description { font-size: 1rem; line-height: 1.8; max-width: 500px; }
+.hero-actions { gap: 14px; }
+.hero-actions .btn { min-height: 50px; padding: 0 22px; border-radius: 9px; font-size: .83rem; }
+.hero-actions .btn-secondary { display: inline-flex; }
+
+.hero-3d-wrapper {
+  height: 620px;
+  border-radius: 0 0 0 150px;
+  box-shadow: none;
+  background: linear-gradient(135deg, #0569c8, #00225b);
+}
+.hero-3d-wrapper::before {
+  background: radial-gradient(circle at 50% 42%, rgba(59, 174, 255, .42), transparent 42%), linear-gradient(135deg, rgba(7, 105, 247, .18), rgba(0, 20, 66, .28));
+}
+.hero-3d-wrapper::after { opacity: .8; }
+.canvas-overlay-card { left: 32px; right: 32px; bottom: 28px; background: rgba(4, 36, 92, .78); }
+
+.stats-banner {
+  max-width: 500px;
+  margin-top: 7px;
+  padding-top: 20px;
+  border-top: 1px solid #dfe7f2;
+}
+.stat-item h3 { font-size: 1.55rem; color: #0569f7; }
+.stat-item p { font-size: .68rem; color: #68738c; }
+
+.services-section, .repository-section, .intelligence-section, .testimonials-section, .contact-section { padding: 105px 0; }
+.services-section { background: #f7faff; }
+.section-header { max-width: 760px; margin-bottom: 52px; }
+.section-title { font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1.12; letter-spacing: -.045em; }
+.section-description { max-width: 700px; font-size: 1rem; line-height: 1.8; }
+.services-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.service-card { min-height: 315px; padding: 32px; border-color: #e4ebf5; box-shadow: none; }
+.service-card:hover { border-color: #bdd2f7; }
+.service-icon { width: 55px; height: 55px; margin-bottom: 19px; border-radius: 12px; font-size: 1.4rem; }
+.service-title { font-size: 1.12rem; margin-bottom: 12px; }
+.service-desc { font-size: .86rem; line-height: 1.65; }
+.service-features li { font-size: .78rem; }
+
+.repository-section { background: #fff; }
+.repo-filter-bar { margin-bottom: 44px; }
+.filter-btn { padding: 11px 20px; border-radius: 9px; font-size: .78rem; }
+.projects-grid { gap: 24px; }
+.project-card { border-radius: 18px; border-color: #e4ebf5; }
+
+.intelligence-section { background: linear-gradient(135deg, #061a46, #0759cf); }
+.intelligence-card { border-radius: 20px; box-shadow: 0 26px 65px rgba(0, 17, 58, .28); }
+
+.testimonials-section { background: #f7faff; }
+.testimonials-grid { gap: 22px; }
+.testimonial-card { padding: 30px; border-color: #e4ebf5; box-shadow: none; }
+
+.contact-section { background: #fff; }
+.contact-card-wrapper { border-radius: 22px; border-color: #dfe7f2; box-shadow: 0 22px 55px rgba(11, 42, 92, .10); }
+.footer { background: #06183d; }
+
+@media (max-width: 992px) {
+  .hero { min-height: auto; padding-top: 100px; }
+  .hero-grid { width: min(1180px, calc(100% - 44px)); grid-template-columns: 1fr; gap: 38px; }
+  .hero-content { padding: 16px 0 0; }
+  .hero-3d-wrapper { height: 460px; border-radius: 90px 0 0 90px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .navbar, .navbar.scrolled { height: 65px; }
+  .brand-logo img { width: 39px; height: 39px; border: 0; }
+  .brand-name { font-size: .85rem; }
+  .hero { padding-top: 87px; }
+  .hero-grid { width: min(100% - 32px, 580px); }
+  .hero-title { font-size: 2.55rem; }
+  .hero-actions .btn { min-height: 48px; }
+  .stats-banner { padding-top: 17px; }
+  .hero-3d-wrapper { height: 330px; border-radius: 52px 0 0 52px; }
+  .canvas-overlay-card { left: 14px; right: 14px; bottom: 15px; }
+  .services-section, .repository-section, .intelligence-section, .testimonials-section, .contact-section { padding: 72px 0; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { min-height: auto; padding: 28px; }
+}
