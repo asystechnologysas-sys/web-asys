@@ -1,5 +1,4 @@
 import { createIcons, icons } from 'lucide';
-import { initHero3DScene } from './src/threeScene.js';
 import { projectsData } from './src/projectsData.js';
 import { saveContactLead } from './src/apiClient.js';
 import { showNotification } from './src/notification.js';
@@ -77,22 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* ===================================================
-     THREE.JS 3D CANVAS
-     =================================================== */
-
-  try {
-
-    initHero3DScene('canvas-hero-3d');
-
-  } catch (err) {
-
-    console.warn(
-      'WebGL setup fallback:',
-      err
-    );
-  }
-
+  setupExperienceInteractions();
 
   /* ===================================================
      PROJECTS
@@ -184,6 +168,67 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 });
+
+
+function setupExperienceInteractions() {
+  document.documentElement.classList.add('js-ready');
+  const serviceData = {
+    automation: ['CAPACIDAD ASYS / 01', 'Automatización que libera a tu equipo.', 'Diseñamos flujos que eliminan tareas repetitivas, conectan tus herramientas y devuelven tiempo a las personas que hacen crecer el negocio.'],
+    ai: ['CAPACIDAD ASYS / 02', 'Inteligencia para decidir mejor.', 'Creamos asistentes y modelos que convierten la información de tu operación en respuestas, señales y decisiones más rápidas.'],
+    software: ['CAPACIDAD ASYS / 03', 'Software que entiende tu operación.', 'Construimos plataformas a medida, desde dashboards hasta sistemas internos, con una experiencia clara para cada equipo.'],
+    integrations: ['CAPACIDAD ASYS / 04', 'Un ecosistema que trabaja conectado.', 'Integramos APIs, canales y herramientas para que los datos fluyan y tu operación deje de depender de tareas duplicadas.']
+  };
+  const teasers = document.querySelectorAll('.service-teaser');
+  const serviceKicker = document.getElementById('service-kicker');
+  const serviceTitle = document.getElementById('service-title');
+  const serviceDescription = document.getElementById('service-description');
+
+  teasers.forEach(teaser => teaser.addEventListener('click', () => {
+    teasers.forEach(item => item.classList.remove('active'));
+    teaser.classList.add('active');
+    const content = serviceData[teaser.dataset.service];
+    if (!content) return;
+    serviceKicker.textContent = content[0];
+    serviceTitle.textContent = content[1];
+    serviceDescription.textContent = content[2];
+  }));
+
+  const problemData = [
+    ['Menos operación repetitiva.', 'ASYS convierte tareas repetitivas en flujos automáticos que avanzan incluso cuando tu equipo está enfocado en lo importante.', 'Solución ASYS / Automatización', 'Impacto / Tiempo recuperado'],
+    ['Una sola fuente de verdad.', 'Centralizamos la información clave para que cada persona encuentre lo que necesita y trabaje con datos confiables.', 'Solución ASYS / Datos conectados', 'Impacto / Claridad operativa'],
+    ['Todo tu ecosistema, conectado.', 'Integramos las herramientas que ya usas para eliminar reprocesos y hacer que cada sistema comparta el mismo contexto.', 'Solución ASYS / Integraciones', 'Impacto / Flujo sin fricciones'],
+    ['Decisiones con señales claras.', 'Convertimos datos dispersos en tableros y alertas que permiten actuar antes, medir mejor y crecer con control.', 'Solución ASYS / Inteligencia de datos', 'Impacto / Mejor toma de decisiones']
+  ];
+  const problemItems = document.querySelectorAll('.problem-item');
+  problemItems.forEach(item => item.addEventListener('click', () => {
+    problemItems.forEach(entry => entry.classList.remove('active'));
+    item.classList.add('active');
+    const content = problemData[Number(item.dataset.problem)];
+    document.getElementById('problem-title').textContent = content[0];
+    document.getElementById('problem-description').textContent = content[1];
+    document.getElementById('problem-solution').textContent = content[2];
+    document.getElementById('problem-impact').textContent = content[3];
+  }));
+
+  const revealElements = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    }), { threshold: 0.12 });
+    revealElements.forEach(element => observer.observe(element));
+  } else {
+    revealElements.forEach(element => element.classList.add('is-visible'));
+  }
+
+  const workflowSteps = document.querySelectorAll('.workflow-step');
+  workflowSteps.forEach((step, index) => step.addEventListener('mouseenter', () => {
+    workflowSteps.forEach(item => item.classList.remove('active'));
+    workflowSteps[index].classList.add('active');
+  }));
+}
 
 
 /* =====================================================
