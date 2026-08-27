@@ -518,7 +518,7 @@ function renderProjects(filterCategory = 'all') {
 
             <i data-lucide="eye"></i>
 
-            Ver Galería de Fotos & Detalles
+            Ver proyecto
 
           </button>
 
@@ -1810,11 +1810,31 @@ function setupContactForm() {
   }
 
 
+  const formStatus = document.getElementById('contact-form-status');
+  const requiredFields = Array.from(form.querySelectorAll('input[required], select[required], textarea[required]'));
+  let isSubmitting = false;
+
+  const validateField = field => {
+    const hasValue = field.type === 'checkbox' ? field.checked : field.value.trim() !== '';
+    const isValid = hasValue && field.validity.valid;
+    field.classList.toggle('is-invalid', !isValid && (field.dataset.touched === 'true' || form.dataset.submitted === 'true'));
+    field.classList.toggle('is-valid', isValid && field.type !== 'checkbox');
+    return isValid;
+  };
+
+
   const updateSubmitAvailability = () => {
     if (submitBtn) {
-      submitBtn.disabled = !privacyConsent?.checked;
+      submitBtn.disabled = isSubmitting || !privacyConsent?.checked || !requiredFields.every(validateField);
     }
   };
+
+  requiredFields.forEach(field => {
+    const update = () => { field.dataset.touched = 'true'; validateField(field); updateSubmitAvailability(); };
+    field.addEventListener('blur', update);
+    field.addEventListener('input', update);
+    field.addEventListener('change', update);
+  });
 
 
   privacyConsent?.addEventListener(
@@ -1833,7 +1853,23 @@ function setupContactForm() {
       e.preventDefault();
 
 
+      if (isSubmitting) return;
+      form.dataset.submitted = 'true';
+      if (!requiredFields.every(validateField)) {
+        if (formStatus) {
+          formStatus.textContent = 'Revisa los campos marcados para poder enviar tu solicitud.';
+          formStatus.className = 'form-status error';
+        }
+        updateSubmitAvailability();
+        return;
+      }
+
+
       if (!privacyConsent?.checked) {
+        if (formStatus) {
+          formStatus.textContent = 'Debes autorizar el tratamiento de datos personales para enviar tu mensaje.';
+          formStatus.className = 'form-status error';
+        }
         showNotification({
           type: 'error',
           title: 'Autorización requerida',
@@ -1878,6 +1914,8 @@ function setupContactForm() {
          ============================================== */
 
       if (submitBtn) {
+
+        isSubmitting = true;
 
         submitBtn.disabled =
           true;
@@ -1931,9 +1969,23 @@ function setupContactForm() {
 
 
         form.reset();
+        form.dataset.submitted = 'false';
+        requiredFields.forEach(field => {
+          field.dataset.touched = 'false';
+          field.classList.remove('is-valid', 'is-invalid');
+        });
+        if (formStatus) {
+          formStatus.textContent = '¡Solicitud recibida! Revisaremos tu información y te contactaremos pronto.';
+          formStatus.className = 'form-status success';
+        }
 
 
       } catch (err) {
+
+        if (formStatus) {
+          formStatus.textContent = err.message || 'No pudimos enviar tu solicitud. Inténtalo nuevamente.';
+          formStatus.className = 'form-status error';
+        }
 
         showNotification({
 
@@ -1952,6 +2004,8 @@ function setupContactForm() {
       } finally {
 
         if (submitBtn) {
+
+          isSubmitting = false;
 
           updateSubmitAvailability();
 
