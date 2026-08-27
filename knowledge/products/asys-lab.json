@@ -1,0 +1,14 @@
+{
+  "title": "ASYS LAB",
+  "category": "asys-lab",
+  "source": "official-provided",
+  "sourceType": "business-documentation",
+  "url": "https://asysdigital.com/",
+  "priority": 1,
+  "verified": true,
+  "public": true,
+  "status": "IN_DEVELOPMENT",
+  "lastUpdated": "2026-08-26",
+  "language": "es",
+  "content": "ASYS LAB es el espacio de experimentación, demostración e investigación tecnológica de ASYS. Está pensado para demos, prototipos, pruebas de concepto, videos, experimentos y exploración de nuevas tecnologías. Su propósito es mostrar lo que ASYS puede construir y desarrollar; una demo o prototipo no debe presentarse automáticamente como un producto comercial disponible."
+}
