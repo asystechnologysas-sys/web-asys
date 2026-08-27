@@ -1,6 +1,6 @@
 import { createIcons, icons } from 'lucide';
 import { projectsData } from './src/projectsData.js';
-import { saveContactLead } from './src/apiClient.js';
+import { saveContactLead, sendChatMessage } from './src/apiClient.js';
 import { showNotification } from './src/notification.js';
 
 
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   setupExperienceInteractions();
+  setupAsysAiChat();
 
   /* ===================================================
      PROJECTS
@@ -168,6 +169,41 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 });
+
+function setupAsysAiChat() {
+  const panel = document.getElementById('asys-chat');
+  const launcher = document.getElementById('asys-chat-launcher');
+  const close = document.getElementById('asys-chat-close');
+  const form = document.getElementById('asys-chat-form');
+  const input = document.getElementById('asys-chat-text');
+  const messages = document.getElementById('asys-chat-messages');
+  const suggestions = document.getElementById('asys-chat-suggestions');
+  if (!panel || !launcher || !form || !input || !messages) return;
+  const history = [];
+  const addMessage = (content, role, data = {}) => {
+    const item = document.createElement('div'); item.className = `asys-message ${role}`;
+    const text = document.createElement('p'); text.textContent = content; item.append(text);
+    if (data.cta) { const link = document.createElement('a'); link.href = data.cta.url; link.className = 'asys-message-cta'; link.textContent = data.cta.label; if (data.cta.url.startsWith('http')) { link.target = '_blank'; link.rel = 'noopener noreferrer'; } item.append(link); }
+    messages.append(item); messages.scrollTop = messages.scrollHeight; return item;
+  };
+  const open = () => { panel.classList.add('is-open'); panel.setAttribute('aria-hidden', 'false'); launcher.setAttribute('aria-expanded', 'true'); input.focus(); };
+  const hide = () => { panel.classList.remove('is-open'); panel.setAttribute('aria-hidden', 'true'); launcher.setAttribute('aria-expanded', 'false'); };
+  launcher.addEventListener('click', open); close?.addEventListener('click', hide);
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && panel.classList.contains('is-open')) hide(); });
+  addMessage('Hola 👋 Soy ASYS AI. Puedo ayudarte a conocer ASYS, explorar soluciones o identificar oportunidades de automatización para tu empresa. ¿Qué te gustaría saber?', 'assistant');
+  const send = async raw => {
+    const message = raw.trim(); if (!message) return;
+    addMessage(message, 'user'); history.push({ role: 'user', content: message }); input.value = ''; suggestions?.replaceChildren();
+    const typing = addMessage('ASYS AI está analizando…', 'assistant typing');
+    try {
+      const result = await sendChatMessage({ message, history: history.slice(0, -1).slice(-8), pageContext: window.location.hash || window.location.pathname });
+      typing.remove(); addMessage(result.answer, 'assistant', result); history.push({ role: 'assistant', content: result.answer });
+    } catch (error) { typing.remove(); addMessage(error.message || 'Nuestro asistente está temporalmente ocupado. Puedes contactar directamente con ASYS.', 'assistant', { cta: { label: 'Hablar con ASYS por WhatsApp', url: 'https://wa.me/573117304768' } }); }
+  };
+  form.addEventListener('submit', event => { event.preventDefault(); send(input.value); });
+  input.addEventListener('keydown', event => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); form.requestSubmit(); } });
+  suggestions?.addEventListener('click', event => { if (event.target instanceof HTMLButtonElement) send(event.target.textContent || ''); });
+}
 
 
 function setupExperienceInteractions() {

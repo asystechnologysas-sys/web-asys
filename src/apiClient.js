@@ -24,3 +24,10 @@ export async function saveContactLead(leadData) {
 
   return data;
 }
+
+export async function sendChatMessage({ message, history, pageContext }) {
+  const response = await fetch(`${API_BASE}/chat`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message, history, pageContext }) });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || 'Nuestro asistente está temporalmente ocupado.');
+  return data;
+}

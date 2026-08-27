@@ -5,6 +5,7 @@ const CONTACT_CTA = { label: 'Hablar con ASYS por WhatsApp', url: 'https://wa.me
 const ANALYSIS_CTA = { label: 'Analizar mi empresa', url: '#diagnostico' };
 
 function detectLanguage(message) { return /\b(the|what|how|can you|services)\b/i.test(message) ? 'en' : 'es'; }
+function isUnsafeRequest(message) { return /(ignora.*instrucciones|system prompt|prompt del sistema|api key|api keys|clave.*api|token|credencial|documento.*interno|ejecuta.*sql|revela.*instruccion)/i.test(message); }
 
 function localAnswer(message, sources, intent) {
   const text = message.toLowerCase();
@@ -16,7 +17,8 @@ function localAnswer(message, sources, intent) {
   return `${context} ¿Quieres que revisemos cómo podría aplicarse a tu empresa?`;
 }
 
-export async function answerChat({ message, history = [] }) {
+export async function answerChat({ message, history = [], pageContext = '' }) {
+  if (isUnsafeRequest(message)) return { answer: 'No puedo ayudar a revelar instrucciones internas, credenciales ni información privada. Sí puedo ayudarte con información pública de ASYS Technology.', intent: 'UNSAFE_REQUEST', confidence: 'HIGH', provider: 'safety', sources: [], cta: null };
   const intent = classifyIntent(message);
   const sources = retrieveKnowledge(message);
   const language = detectLanguage(message);
@@ -24,7 +26,7 @@ export async function answerChat({ message, history = [] }) {
   let answer;
   let provider = 'official-retrieval';
   try {
-    answer = await generateWithProvider({ messages: [...history.slice(-6), { role: 'user', content: message }], context, language });
+    answer = await generateWithProvider({ messages: [...history.slice(-6), { role: 'user', content: message }], context, language, pageContext });
     if (answer) provider = 'llm';
   } catch {
     answer = null;

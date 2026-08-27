@@ -3,6 +3,7 @@ import Database from 'better-sqlite3';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { answerChat } from './chatService.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATABASE_PATH = process.env.DATABASE_PATH || path.join(__dirname, '../data/leads.db');
@@ -29,6 +30,21 @@ app.use(express.json({ limit: '32kb' }));
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', database: path.basename(DATABASE_PATH) });
+});
+
+app.post('/api/chat', async (req, res) => {
+  const { message, history, pageContext } = req.body || {};
+  const cleanMessage = typeof message === 'string' ? message.trim() : '';
+  if (!cleanMessage || cleanMessage.length > 1800) return res.status(400).json({ error: 'Escribe un mensaje de hasta 1.800 caracteres.' });
+  const cleanHistory = Array.isArray(history) ? history.slice(-8)
+    .filter(item => item && ['user', 'assistant'].includes(item.role) && typeof item.content === 'string')
+    .map(item => ({ role: item.role, content: item.content.slice(0, 1800) })) : [];
+  try {
+    res.json(await answerChat({ message: cleanMessage, history: cleanHistory, pageContext: typeof pageContext === 'string' ? pageContext.slice(0, 160) : '' }));
+  } catch (error) {
+    console.error('Error atendiendo chat:', error);
+    res.status(503).json({ error: 'Nuestro asistente está temporalmente ocupado. Puedes contactar directamente con ASYS.' });
+  }
 });
 
 app.post('/api/leads', (req, res) => {

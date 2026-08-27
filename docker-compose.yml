@@ -6,6 +6,8 @@ services:
     environment:
       DATABASE_PATH: /data/leads.db
       API_SECRET_KEY: ${API_SECRET_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
     volumes:
       - leads_data:/data
     restart: unless-stopped
