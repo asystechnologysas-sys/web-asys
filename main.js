@@ -11,6 +11,8 @@ import { initCursorEffects } from './src/interactions/cursorEffects.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  repairMojibake();
+
   /* ===================================================
      COOKIE CONSENT
      =================================================== */
@@ -191,6 +193,28 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 });
+
+function repairMojibake() {
+  const fix = value => {
+    if (!/[ÃÂ]/.test(value)) return value;
+    try {
+      return new TextDecoder('utf-8', { fatal: true }).decode(
+        Uint8Array.from(value, char => char.charCodeAt(0))
+      );
+    } catch {
+      return value;
+    }
+  };
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => { node.nodeValue = fix(node.nodeValue); });
+  document.querySelectorAll('[aria-label], [placeholder], [title], meta[content]').forEach(element => {
+    ['aria-label', 'placeholder', 'title', 'content'].forEach(attribute => {
+      if (element.hasAttribute(attribute)) element.setAttribute(attribute, fix(element.getAttribute(attribute)));
+    });
+  });
+}
 
 function setupAsysAiChat() {
   const panel = document.getElementById('asys-chat');
