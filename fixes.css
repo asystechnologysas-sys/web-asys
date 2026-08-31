@@ -1,0 +1,8 @@
+/* Correcciones de estabilidad y contraste de la versión original. */
+html{background:#06142d;overscroll-behavior-y:none}
+body{margin:0;min-height:0;overflow-x:hidden;background:#fff}
+.navbar .brand-text strong{color:#0d1831!important;text-shadow:none}
+.navbar .brand-text small{color:#074ce3!important}
+.footer{margin:0!important}
+.footer .brand-text strong{color:#fff!important}
+.footer .brand-text small{color:#64c9f6!important}
