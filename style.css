@@ -1,3 +1,5 @@
+/* Corrección visible: contraste de marca y fin de página sin franja vacía. */
+html{background:#06142d!important;overscroll-behavior-y:none}body{margin:0!important;min-height:0!important;overflow-x:hidden!important;background:#fff!important}.navbar .brand-text strong{color:#0d1831!important;text-shadow:none!important}.navbar .brand-text small{color:#074ce3!important}.footer{margin:0!important}.footer .brand-text strong{color:#fff!important}.footer .brand-text small{color:#64c9f6!important}
 .reveal{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}.reveal.is-visible{opacity:1;transform:none}@keyframes orbit{to{transform:translate(-50%,-50%) rotate(340deg)}}
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
