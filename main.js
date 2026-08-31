@@ -2,7 +2,6 @@ import { createIcons, icons } from 'lucide';
 import { projectsData } from './src/projectsData.js';
 import { saveContactLead, sendChatMessage } from './src/apiClient.js';
 import { showNotification } from './src/notification.js';
-import { initCursorEffects } from './src/interactions/cursorEffects.js';
 
 
 /* =====================================================
@@ -79,27 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupExperienceInteractions();
   setupAsysAiChat();
-
-  /* ===================================================
-     CURSOR EFFECTS & INTERACTIONS
-     =================================================== */
-
-  try {
-
-    initCursorEffects();
-
-    // Add cursor-active class to body for custom cursor
-    document.addEventListener('mousemove', () => {
-      document.body.classList.add('cursor-active');
-    }, { once: true });
-
-  } catch (err) {
-
-    console.warn(
-      'Cursor effects fallback:',
-      err
-    );
-  }
 
   /* ===================================================
      PROJECTS
